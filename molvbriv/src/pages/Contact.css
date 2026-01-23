@@ -1,0 +1,145 @@
+/* Minimalist Contact Page Styling */
+
+.contact-page {
+    /* Full height center alignment */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 60px;
+    /* Cream background */
+    background-color: var(--color-cream);
+}
+
+.contact-center-wrapper {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    /* Glassmorphism */
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.contact-subtitle {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+/* Form Styles */
+.contact-form-minimal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.form-group-minimal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group-minimal label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+    font-weight: 500;
+    margin-left: 2px;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.form-group-minimal input,
+.form-group-minimal textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: transparent;
+    /* Clean look */
+    border: 1px solid #dcdcdc;
+    /* Soft border */
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    /* Sharp edges like reference */
+}
+
+/* Focus state */
+.form-group-minimal input:focus,
+.form-group-minimal textarea:focus {
+    outline: none;
+    border-color: #333;
+    background-color: #fff;
+}
+
+.form-group-minimal input::placeholder,
+.form-group-minimal textarea::placeholder {
+    color: #aaa;
+}
+
+/* Submit Button */
+.btn-submit-minimal {
+    margin-top: 1rem;
+    padding: 16px;
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #333;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit-minimal:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Footer Info */
+.contact-footer-info {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.contact-footer-info a {
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 2.2rem;
+    }
+
+    .contact-page {
+        padding-top: 100px;
+    }
+}

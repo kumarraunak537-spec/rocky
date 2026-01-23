@@ -1,0 +1,280 @@
+.story-page {
+    padding-top: 0;
+}
+
+.story-chapter {
+    position: relative;
+    overflow: hidden;
+}
+
+.chapter-num {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Hero Chapter */
+.hero-chapter {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.chapter-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.chapter-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chapter-content {
+    background: rgba(245, 241, 232, 0.9);
+    padding: var(--spacing-lg);
+    max-width: 600px;
+    animation: fadeIn 1s ease-out;
+}
+
+.chapter-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.chapter-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Visual Scroll Indicator */
+.scroll-indicator {
+    margin-top: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 40px;
+    background-color: var(--color-charcoal);
+}
+
+
+/* Split Chapter */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.split-images {
+    position: relative;
+    height: 600px;
+}
+
+.img-portrait {
+    width: 80%;
+    height: 90%;
+    object-fit: cover;
+}
+
+.img-detail {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-cream);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.vision-quote {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Parallax Chapter */
+.parallax-chapter {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-attachment: fixed;
+    color: #1a1a1a;
+    /* Changed to black for visibility */
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: brightness(0.6);
+    z-index: -1;
+}
+
+.text-white {
+    color: rgb(26, 26, 26);
+}
+
+/* Materials Grid */
+.materials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Mobile */
+    gap: var(--spacing-md);
+}
+
+.material-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.material-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.material-card:hover .material-img img {
+    transform: scale(1.1);
+}
+
+.material-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.material-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.material-info p {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--color-gold);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: var(--spacing-lg);
+    position: relative;
+    width: 50%;
+}
+
+.timeline-item.left {
+    align-self: flex-start;
+    text-align: right;
+    padding-right: 40px;
+    margin-right: auto;
+}
+
+.timeline-item.right {
+    align-self: flex-end;
+    text-align: left;
+    padding-left: 40px;
+    margin-left: auto;
+    flex-direction: row-reverse;
+    /* Flip image/text side for logic if needed but simplistic css approach */
+    justify-content: flex-start;
+}
+
+/* Actually typically we transform timeline items. Let's adjust simpler approach for timeline item content/image wrapper. */
+.timeline-item.right {
+    left: 50%;
+}
+
+.timeline-item.left {
+    left: 0;
+}
+
+.timeline-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.year {
+    display: block;
+    font-size: 3rem;
+    font-family: var(--font-serif);
+    color: var(--color-terracotta);
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Scroll Animations */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+}
+
+.reveal-on-scroll.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+    .split-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .materials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

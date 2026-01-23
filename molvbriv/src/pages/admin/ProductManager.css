@@ -1,0 +1,284 @@
+/* Molvbriv Product Manager Styles */
+
+.add-btn {
+    background-color: var(--color-charcoal);
+    color: var(--color-white);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    font-family: var(--font-sans);
+}
+
+.add-btn:hover {
+    background-color: var(--color-black);
+}
+
+.table-container {
+    background: var(--color-white);
+    border-radius: 8px;
+    border: 1px solid var(--color-beige);
+    overflow: hidden;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: var(--color-cream);
+    padding: 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-charcoal);
+    font-weight: 600;
+    border-bottom: 1px solid var(--color-beige);
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-beige);
+    color: var(--color-charcoal);
+    vertical-align: middle;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:hover td {
+    background-color: rgba(245, 241, 232, 0.5);
+}
+
+.product-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: var(--color-cream);
+    border: 1px solid var(--color-beige);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.icon-btn.edit {
+    color: var(--color-gold);
+}
+
+.icon-btn.edit:hover {
+    background-color: rgba(212, 175, 119, 0.15);
+    color: var(--color-charcoal);
+}
+
+.icon-btn.delete {
+    color: var(--color-terracotta);
+}
+
+.icon-btn.delete:hover {
+    background-color: rgba(200, 126, 107, 0.15);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--color-white);
+    width: 100%;
+    max-width: 520px;
+    border-radius: 8px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-beige);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--color-charcoal);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-charcoal);
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.close-btn:hover {
+    background-color: var(--color-cream);
+}
+
+.modal-form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-charcoal);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--color-beige);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    color: var(--color-charcoal);
+    transition: all var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 119, 0.2);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.modal-form textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--color-beige);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    font-size: 0.95rem;
+    color: var(--color-charcoal);
+    transition: all var(--transition-fast);
+}
+
+.modal-form textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 119, 0.2);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-beige);
+}
+
+.cancel-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-white);
+    border: 1px solid var(--color-beige);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--color-charcoal);
+    transition: all var(--transition-fast);
+}
+
+.cancel-btn:hover {
+    background: var(--color-cream);
+    border-color: var(--color-charcoal);
+}
+
+.save-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-charcoal);
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    transition: all var(--transition-fast);
+}
+
+.save-btn:hover {
+    background: var(--color-black);
+}
+
+.save-btn:disabled {
+    background: var(--color-beige);
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Verify Button */
+.verify-btn {
+    font-family: var(--font-sans);
+}
+
+/* Sidebar Subcategories */
+.sidebar-subcategories {
+    background: var(--color-cream);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+}

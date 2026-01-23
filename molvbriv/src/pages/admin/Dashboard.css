@@ -1,0 +1,153 @@
+/* Dashboard Styles */
+.dashboard-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.dashboard-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba(8, 48, 30, 0.1);
+}
+
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #08301e;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.1;
+}
+
+/* Sections */
+.dashboard-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+/* Quick Actions */
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.action-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.action-card:hover {
+    background-color: #08301e;
+    border-color: #08301e;
+    transform: translateY(-2px);
+}
+
+.action-card:hover span,
+.action-card:hover svg {
+    color: white;
+}
+
+.action-card svg {
+    color: #08301e;
+    transition: color 0.2s;
+}
+
+.action-card span {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* Loading */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    color: #888;
+}

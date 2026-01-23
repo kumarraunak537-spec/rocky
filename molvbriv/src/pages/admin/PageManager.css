@@ -1,0 +1,290 @@
+/* Page Manager Styles - Premium Overhaul */
+.page-manager {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Primary Button */
+.btn-add,
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    background-color: #08301e;
+    /* Primary Color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    /* Slightly sharper corners for luxury feel */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(8, 48, 30, 0.15);
+}
+
+.btn-add:hover,
+.btn-primary:hover {
+    background-color: #0c4a2e;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(8, 48, 30, 0.2);
+}
+
+/* Location Tabs (for Navigation) */
+.nav-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-tab {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-tab.active {
+    color: #08301e;
+    border-bottom-color: #08301e;
+}
+
+.nav-tab:hover:not(.active) {
+    color: #333;
+}
+
+/* Table Card */
+.pages-table {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow */
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+/* Table Header */
+.pages-table thead {
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+}
+
+.pages-table th {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+}
+
+/* Table Body */
+.pages-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #fff;
+    /* Hidden borders for cleaner look, or subtle */
+    border-bottom-color: #f9f9f9;
+    vertical-align: middle;
+}
+
+.pages-table tr:last-child td {
+    border-bottom: none;
+}
+
+.pages-table tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* Page Name Cell */
+.page-name {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.home-icon {
+    color: #c9a050;
+    /* Accent color */
+}
+
+/* Slug Cell */
+.slug-cell {
+    font-family: 'Courier New', monospace;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.published {
+    background-color: #ecfdf5;
+    color: #047857;
+    border: 1px solid #d1fae5;
+}
+
+.status-badge.draft {
+    background-color: #fffbeb;
+    color: #b45309;
+    border: 1px solid #fef3c7;
+}
+
+/* Action Buttons */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background-color: #f8f9fa;
+    color: #333;
+    border-color: #ddd;
+}
+
+.btn-icon.delete:hover {
+    background-color: #fff5f5;
+    color: #e02424;
+    border-color: #fed7d7;
+}
+
+.btn-icon:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem !important;
+    color: #888;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+/* Modal */
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+}
+
+.modal {
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modal h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+}
+
+.form-group label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.85rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #08301e;
+    box-shadow: 0 0 0 3px rgba(8, 48, 30, 0.05);
+}
+
+/* Modal Actions */
+.modal-actions {
+    border-top: 1px solid #f0f0f0;
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.btn-save {
+    background-color: #08301e;
+    color: white;
+    font-weight: 500;
+}
+
+.btn-cancel {
+    border-color: #e5e5e5;
+    color: #666;
+}
+
+.btn-cancel:hover {
+    background-color: #f9fafb;
+    color: #333;
+}

@@ -1,0 +1,181 @@
+/* Molvbriv Admin Panel Layout */
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    background-color: var(--color-cream);
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--color-white);
+    border-right: 1px solid var(--color-beige);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    position: fixed;
+    height: 100vh;
+}
+
+.admin-sidebar h1 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--color-gold);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-radius: 4px;
+    color: var(--color-charcoal);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.admin-nav-link:hover {
+    background-color: var(--color-cream);
+    color: var(--color-black);
+}
+
+.admin-nav-link.active {
+    background-color: var(--color-charcoal);
+    color: var(--color-white);
+}
+
+.admin-user {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-beige);
+}
+
+.logout-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.85rem 1rem;
+    color: var(--color-terracotta);
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    transition: all var(--transition-fast);
+}
+
+.logout-btn:hover {
+    background-color: rgba(200, 126, 107, 0.1);
+}
+
+/* Navigation Section Divider */
+.nav-divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 1rem 0 0.5rem;
+}
+
+.nav-section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    padding: 0.5rem 1rem;
+}
+
+/* Main Content Area */
+.admin-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 2rem;
+}
+
+.admin-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-charcoal);
+}
+
+/* Cards */
+.admin-card {
+    background: var(--color-white);
+    border-radius: 8px;
+    border: 1px solid var(--color-beige);
+    padding: 1.5rem;
+}
+
+/* Stats Grid */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--color-white);
+    border-radius: 8px;
+    border: 1px solid var(--color-beige);
+    padding: 1.5rem;
+}
+
+.stat-card h3 {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-charcoal);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        width: 200px;
+        padding: 1rem;
+    }
+
+    .admin-content {
+        margin-left: 200px;
+        padding: 1rem;
+    }
+
+    .admin-sidebar h1 {
+        font-size: 1rem;
+    }
+}

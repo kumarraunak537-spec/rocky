@@ -1,0 +1,136 @@
+.journal-page {
+    padding-top: 80px;
+    min-height: 100vh;
+    background-color: #FAFAFA;
+    /* Slightly lighter background for reading */
+}
+
+.page-title {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-charcoal);
+}
+
+.page-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--color-terracotta);
+}
+
+/* Categories */
+.category-filter {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.cat-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: var(--color-charcoal);
+    opacity: 0.6;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.cat-btn:hover,
+.cat-btn.active {
+    opacity: 1;
+    border-bottom-color: var(--color-gold);
+}
+
+/* Grid */
+.journal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.journal-card {
+    background: white;
+    transition: transform var(--transition-smooth);
+}
+
+.journal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.journal-img-wrapper {
+    overflow: hidden;
+    height: 250px;
+}
+
+.journal-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-smooth);
+}
+
+.journal-card:hover .journal-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.journal-content {
+    padding: var(--spacing-md);
+}
+
+.journal-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-sm);
+    color: #888;
+}
+
+.journal-cat {
+    color: var(--color-gold);
+}
+
+.journal-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+}
+
+.journal-excerpt {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.read-more {
+    background: none;
+    border: none;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--color-charcoal);
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .journal-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .journal-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
