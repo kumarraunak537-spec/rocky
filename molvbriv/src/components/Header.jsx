@@ -117,7 +117,7 @@ const Header = () => {
           {/* Icons (Right Side) */}
           <div className="header-actions">
 
-            {/* Inline Search Container */}
+            {/* Inline Search Container - Logic handled in CSS */}
             <div className={`search-inline-wrapper ${isSearchOpen ? 'active' : ''}`}>
               <form
                 onSubmit={(e) => {
@@ -127,27 +127,32 @@ const Header = () => {
                 }}
                 className="search-inline-form"
               >
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  placeholder="Search..."
-                  className="search-inline-input"
-                />
+                <div className="container flex-center" style={{ height: '100%', position: 'relative' }}>
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    placeholder="Search for luxury..."
+                    className="search-inline-input"
+                  />
+                  <button type="button" className="search-close-mobile" onClick={() => setIsSearchOpen(false)}>
+                    <X size={20} />
+                  </button>
+                </div>
               </form>
               <button
                 className="icon-btn search-trigger"
                 aria-label="Search"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
               >
-                {isSearchOpen ? <X size={20} /> : <Search size={20} />}
+                <Search size={22} />
               </button>
             </div>
 
-            <button className="icon-btn u-desktop-only" aria-label="Account" onClick={handleAccountClick}>
-              <User size={20} />
+            <button className="icon-btn" aria-label="Account" onClick={handleAccountClick}>
+              <User size={22} />
             </button>
             <button className="icon-btn cart-icon-wrapper" aria-label="Cart" onClick={() => setIsCartOpen(true)}>
-              <ShoppingBag size={20} />
+              <ShoppingBag size={22} />
               <span className="cart-count">1</span>
             </button>
           </div>
