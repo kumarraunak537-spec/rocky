@@ -38,7 +38,10 @@
     width: 100%;
     height: 100%;
     /* Stronger gradient overlay for white text readability */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.6) 100%);
     z-index: 2;
 }
 
@@ -338,7 +341,65 @@
     color: white;
 }
 
-@media (min-width: 768px) {
+/* Mobile - Phone optimized */
+@media (max-width: 1023px) {
+    .hero-section {
+        height: 100svh;
+        /* Small viewport height for mobile browsers */
+        padding: 0 1rem;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        /* Large but fits width */
+        line-height: 1.1;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .btn-hero {
+        width: 100%;
+        min-width: unset;
+        /* Remove min-width constraint */
+        padding: 1rem 0;
+    }
+
+    .featured-grid {
+        gap: 15px;
+    }
+
+    .featured-img {
+        height: 400px;
+        /* Reduced form 600px */
+    }
+
+    .story-teaser {
+        height: auto;
+        padding: 4rem 1rem;
+    }
+
+    .story-bg {
+        background-attachment: scroll;
+        /* Performance on mobile */
+    }
+
+    .seasonal-grid {
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
     .hero-title {
         font-size: 6rem;
     }

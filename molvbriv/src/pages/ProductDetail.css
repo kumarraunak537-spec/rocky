@@ -228,71 +228,118 @@
         padding-top: 70px;
     }
 
+    .product-detail-layout {
+        gap: 20px;
+    }
+
     .product-breadcrumbs {
-        font-size: 0.7rem;
-        margin-bottom: 16px;
+        font-size: 0.75rem;
+        margin-bottom: 12px;
+        padding-left: 16px;
     }
 
     .pd-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
         margin-bottom: 8px;
+        line-height: 1.2;
     }
 
-    .pd-price-wrapper {
-        margin-bottom: 16px;
-    }
-
-    .pd-price {
-        font-size: 1.1rem;
-    }
-
-    .pd-compare-price {
-        font-size: 0.9rem;
-    }
-
-    .pd-discount {
-        font-size: 0.65rem;
-        padding: 3px 8px;
-    }
-
-    .quantity-selector {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .btn-buy-now,
-    .btn-add-cart {
-        font-size: 0.8rem;
-        padding: 14px;
-        letter-spacing: 1.5px;
-    }
-
-    .pd-description {
-        font-size: 0.9rem;
-        line-height: 1.7;
-    }
-
-    .product-info-section {
-        padding: 0 16px;
+    /* Mobile Gallery - Swipe-like Scroll */
+    .product-gallery {
+        width: 100vw;
+        margin-left: -16px;
+        /* Break container padding */
+        margin-right: -16px;
+        gap: 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        display: flex;
+        flex-direction: row;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scroll iOS */
+        padding-bottom: 10px;
+        /* Space for scrollbar if visible */
     }
 
     .main-image-wrapper {
-        aspect-ratio: 1;
+        min-width: 100vw;
+        /* Full width swipe */
+        aspect-ratio: 4/5;
+        scroll-snap-align: start;
+        border-right: 1px solid white;
+        /* Separator */
     }
 
     .thumbnail-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 8px;
+        display: none;
+        /* Hide thumbnails on mobile, rely on swipe */
+    }
+
+    /* Info Section */
+    .product-info-section {
+        padding: 0 20px 20px 20px;
+    }
+
+    .pd-price-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .pd-price {
+        font-size: 1.5rem;
+    }
+
+    .pd-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Fixed Bottom Actions for better conversion */
+    .add-to-cart-area {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 15px;
+        z-index: 100;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        flex-direction: row;
+        gap: 10px;
+        margin: 0;
+    }
+
+    .quantity-selector {
+        display: none;
+        /* Hide quantity on sticky bar to save space */
+    }
+
+    .btn-buy-now {
+        display: none;
+        /* Focus on Add to Cart */
+    }
+
+    .btn-add-cart {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 4px;
+        /* Slight rounded for mobile app feel */
+    }
+
+    /* Make space for fixed bottom bar */
+    .product-detail-page {
+        padding-bottom: 80px;
     }
 
     .related-section {
-        padding: 40px 0;
+        padding: 40px 20px;
         margin-top: 40px;
+        background: #f9f9f9;
     }
 
     .related-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 12px;
     }
 }
 

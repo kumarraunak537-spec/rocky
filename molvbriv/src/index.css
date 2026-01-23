@@ -38,8 +38,12 @@ body {
   background-color: var(--color-cream);
   color: var(--color-charcoal);
   line-height: 1.6;
+  font-size: 16px;
+  /* Base size for mobile reading */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll on mobile */
 }
 
 h1,
@@ -50,13 +54,50 @@ h5,
 h6 {
   font-family: var(--font-serif);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-sm);
+  overflow-wrap: break-word;
+  /* Prevent overflow on long words */
+}
+
+/* Mobile Typography Scale */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
 }
 
 a {
   text-decoration: none;
   color: inherit;
   transition: color var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  /* Remove blue highlight on touch */
+}
+
+/* Desktop Overrides */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
 }
 
 ul {
@@ -73,6 +114,13 @@ img {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+    /* 16px mobile padding */
+  }
 }
 
 .section-padding {

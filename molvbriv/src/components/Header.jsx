@@ -57,6 +57,15 @@ const Header = () => {
     <>
       <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container header-container">
+          {/* Mobile Menu Trigger (Left Side) */}
+          <button
+            className="icon-btn hamburger mobile-only"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
           <Link to="/" className="logo">Molvbriv</Link>
 
           {/* Desktop Navigation */}
@@ -105,7 +114,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Icons */}
+          {/* Icons (Right Side) */}
           <div className="header-actions">
 
             {/* Inline Search Container */}
@@ -134,7 +143,7 @@ const Header = () => {
               </button>
             </div>
 
-            <button className="icon-btn" aria-label="Account" onClick={handleAccountClick}>
+            <button className="icon-btn u-desktop-only" aria-label="Account" onClick={handleAccountClick}>
               <User size={20} />
             </button>
             <button className="icon-btn cart-icon-wrapper" aria-label="Cart" onClick={() => setIsCartOpen(true)}>
@@ -148,16 +157,14 @@ const Header = () => {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         <nav className="mobile-nav-links">
-          <Link to="/" className="mobile-link">Home</Link>
-          <div className="mobile-dropdown-wrapper">
-            <span className="mobile-link" style={{ opacity: 0.8 }}>Men</span>
-            <Link to="/collections/Men/Jeans" className="mobile-sublink">Jeans</Link>
-            <Link to="/collections/Men/Shirts" className="mobile-sublink">Shirts</Link>
-          </div>
-          <Link to="/collections" className="mobile-link">All Collections</Link>
-          <Link to="/our-story" className="mobile-link">Our Story</Link>
-          <Link to="/journal" className="mobile-link">Journal</Link>
-          <Link to="/contact" className="mobile-link">Contact</Link>
+          <Link to="/" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+          <Link to="/collections" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Collections</Link>
+          <Link to="/our-story" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Our Story</Link>
+          <Link to="/journal" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Journal</Link>
+          <Link to="/contact" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+          <div style={{ height: '1px', background: '#e5e5e5', width: '50px', margin: '20px auto' }}></div>
+          <Link to="/login" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Account</Link>
+          <Link to="#" className="mobile-link" onClick={() => { setIsMobileMenuOpen(false); setIsCartOpen(true); }}>Cart</Link>
         </nav>
       </div>
 
@@ -183,7 +190,7 @@ const Header = () => {
             <img src={MOCK_CART_ITEM.image} alt={MOCK_CART_ITEM.name} className="cart-item-img" />
             <div className="cart-item-info">
               <h4>{MOCK_CART_ITEM.name}</h4>
-              <p className="cart-item-price">${MOCK_CART_ITEM.price}</p>
+              <p className="cart-item-price">Rs. {MOCK_CART_ITEM.price}</p>
               <p style={{ fontSize: '0.8rem', color: '#000000ff', marginTop: '5px' }}>Qty: {MOCK_CART_ITEM.quantity}</p>
             </div>
           </div>
@@ -192,7 +199,7 @@ const Header = () => {
         <div className="cart-footer">
           <div className="cart-total">
             <span>Subtotal</span>
-            <span>$1,250.00</span>
+            <span>Rs. 1,250.00</span>
           </div>
           <button className="btn-checkout">Checkout</button>
         </div>

@@ -506,59 +506,202 @@
 }
 
 /* Mobile Responsive - Phones */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     .header {
-        padding: 12px 0;
+        padding: 10px 0;
+        height: 60px;
+        /* Fixed height for calculations */
     }
 
     .header-container {
-        padding: 0 16px;
-    }
-
-    .logo {
-        font-size: 1.1rem;
-        letter-spacing: 0.15em;
-    }
-
-    .nav-desktop {
-        display: none;
-    }
-
-    .header-actions {
-        gap: 15px;
-    }
-
-    .icon-btn svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    .dropdown-menu {
-        display: none;
-    }
-
-    .search-input {
-        font-size: 1.5rem;
-        width: 90%;
-    }
-
-    .cart-drawer {
-        width: 100%;
-    }
-}
-
-/* Tablet Responsive */
-@media (min-width: 769px) and (max-width: 1023px) {
-    .nav-desktop {
-        display: none;
+        padding: 0 15px;
+        justify-content: space-between;
+        /* Ham - Logo - Icons */
     }
 
     .logo {
         font-size: 1.3rem;
+        letter-spacing: 0.1em;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2002;
+        width: max-content;
     }
 
-    .dropdown-menu {
-        width: 500px;
+    .header-actions {
+        z-index: 2002;
+    }
+
+    .u-desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: flex !important;
+    }
+
+    .nav-desktop {
+        display: none;
+    }
+
+    /* Luxury Mobile Drawer */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #fdfbf7;
+        /* Start with solid luxury cream */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Start from top */
+        padding-top: 100px;
+        /* Space for close button if needed, roughly header height */
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s;
+        pointer-events: none;
+    }
+
+    .mobile-menu.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Staggered Animation for Links */
+    .mobile-link {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        color: var(--color-charcoal);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+        display: block;
+        text-decoration: none;
+    }
+
+    .mobile-menu.open .mobile-link {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Stagger delays */
+    .mobile-menu.open .mobile-link:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .mobile-menu.open .mobile-link:nth-child(2) {
+        transition-delay: 0.15s;
+    }
+
+    .mobile-menu.open .mobile-link:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    .mobile-menu.open .mobile-link:nth-child(4) {
+        transition-delay: 0.25s;
+    }
+
+    .mobile-menu.open .mobile-link:nth-child(5) {
+        transition-delay: 0.3s;
+    }
+
+    .mobile-menu.open .mobile-link:nth-child(6) {
+        transition-delay: 0.35s;
+    }
+
+    .mobile-menu.open .mobile-link:nth-child(7) {
+        transition-delay: 0.4s;
+    }
+
+    /* Hamburger Animation */
+    .hamburger {
+        display: flex;
+        z-index: 2005;
+        /* Highest z-index to be clickable */
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        color: #000;
+        order: -1;
+        /* Ensure it's visually first if flex order matters, but JSX handles this */
+    }
+
+    /* Search Bar Mobile Fix - "Inside Sticky Header" */
+    .search-inline-wrapper {
+        position: static;
+        /* Let the form breakout */
+    }
+
+    /* When active, the form takes over the header */
+    .search-inline-wrapper.active .search-inline-form {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Cover entire header height */
+        background-color: #ffffff;
+        /* Clean white background */
+        display: flex;
+        align-items: center;
+        padding: 0 60px 0 20px;
+        /* Right padding for close button */
+        z-index: 2010;
+        /* Above everything */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 0;
+        /* No radius on full width */
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+    }
+
+    /* Hide the form when not active */
+    .search-inline-form {
+        width: 0;
+        opacity: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .search-inline-input {
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+        /* Prevent IOS Zoom */
+        background: transparent;
+        border: none;
+        padding: 0;
+        transform: none;
+        opacity: 1;
+    }
+
+    /* Ensure the search trigger icon stays visible to toggle/close */
+    .search-trigger {
+        z-index: 2011;
+        /* Above the form overlay */
+    }
+
+    /* Cart Drawer Mobile */
+    .cart-drawer {
+        width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -569,10 +712,18 @@
     }
 
     .hamburger {
-        display: none;
+        display: none !important;
     }
 
     .mobile-menu {
         display: none;
+    }
+
+    .mobile-only {
+        display: none !important;
+    }
+
+    .u-desktop-only {
+        display: flex !important;
     }
 }
