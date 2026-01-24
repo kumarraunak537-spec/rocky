@@ -339,6 +339,16 @@
     font-style: italic;
 }
 
+/* Hide browser's native clear button */
+.search-inline-input::-webkit-search-cancel-button,
+.search-inline-input::-webkit-search-decoration,
+.search-inline-input::-webkit-search-results-button,
+.search-inline-input::-webkit-search-results-decoration,
+.search-inline-input::-ms-clear {
+    display: none;
+    -webkit-appearance: none;
+}
+
 .search-trigger {
     position: relative;
     z-index: 1004;

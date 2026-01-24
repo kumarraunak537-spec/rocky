@@ -134,9 +134,6 @@ const Header = () => {
                     placeholder="Search for luxury..."
                     className="search-inline-input"
                   />
-                  <button type="button" className="search-close-mobile" onClick={() => setIsSearchOpen(false)}>
-                    <X size={20} />
-                  </button>
                 </div>
               </form>
               <button
