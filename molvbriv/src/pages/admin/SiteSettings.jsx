@@ -9,6 +9,7 @@ const SiteSettings = () => {
         site_tagline: 'Where Legacy Meets Luxury',
         logo_url: '',
         favicon_url: '',
+        hero_image_url: '',
         maintenance_mode: false,
         maintenance_message: '',
         contact_email: '',
@@ -230,6 +231,52 @@ const SiteSettings = () => {
                                     />
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Hero Section */}
+                <div className="settings-card">
+                    <h2>Hero Section</h2>
+                    <p className="section-description">Customize the hero banner on your homepage</p>
+                    <div className="form-grid">
+                        <div className="form-group full-width">
+                            <label>Hero Image</label>
+                            <div className="image-uploader hero-uploader">
+                                {settings.hero_image_url && (
+                                    <div className="image-preview hero-preview">
+                                        <img src={settings.hero_image_url} alt="Hero" />
+                                        <button
+                                            type="button"
+                                            className="btn-remove-image"
+                                            onClick={() => updateImage('hero_image_url', '')}
+                                        >
+                                            <X size={14} />
+                                        </button>
+                                    </div>
+                                )}
+                                <div className="upload-controls">
+                                    <input
+                                        type="file"
+                                        id="hero-upload"
+                                        accept="image/*"
+                                        onChange={(e) => uploadImage(e.target.files[0], 'hero_image_url')}
+                                        style={{ display: 'none' }}
+                                    />
+                                    <label htmlFor="hero-upload" className="btn-upload">
+                                        <ImageIcon size={16} />
+                                        {settings.hero_image_url ? 'Change Hero Image' : 'Upload Hero Image'}
+                                    </label>
+                                    <span className="or-divider">OR</span>
+                                    <input
+                                        type="text"
+                                        value={settings.hero_image_url}
+                                        onChange={(e) => updateImage('hero_image_url', e.target.value)}
+                                        placeholder="Paste Image URL (Unsplash, etc.)"
+                                    />
+                                </div>
+                            </div>
+                            <p className="helper-text">Recommended size: 1920x1080px or higher for best quality</p>
                         </div>
                     </div>
                 </div>

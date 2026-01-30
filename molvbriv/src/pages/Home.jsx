@@ -1,11 +1,33 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { heroData, featuredCollections, storyTeaser, seasonalHighlight } from '../data/homeData';
+import { supabase } from '../supabaseClient';
 import './Home.css';
 
 const Home = () => {
     const heroRef = useRef(null);
+    const [heroImage, setHeroImage] = useState(heroData.image);
+
+    useEffect(() => {
+        // Fetch hero image from database
+        const fetchHeroImage = async () => {
+            try {
+                const { data, error } = await supabase
+                    .from('site_settings')
+                    .select('hero_image_url')
+                    .limit(1)
+                    .single();
+
+                if (data && data.hero_image_url) {
+                    setHeroImage(data.hero_image_url);
+                }
+            } catch (error) {
+                console.log('Using default hero image');
+            }
+        };
+        fetchHeroImage();
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,7 +46,7 @@ const Home = () => {
             {/* Hero Section */}
             <section className="hero-section">
                 <div className="hero-image-wrapper" ref={heroRef}>
-                    <img src={heroData.image} alt="Molvbriv Hero" className="hero-image" />
+                    <img src={heroImage} alt="Molvbriv Hero" className="hero-image" />
                     <div className="hero-overlay"></div>
                 </div>
 
