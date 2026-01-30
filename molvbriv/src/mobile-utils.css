@@ -1,0 +1,95 @@
+/* Mobile Utilities - Global Touch Optimization */
+
+/* Touch Feedback for All Interactive Elements */
+button:active,
+a:active,
+.btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+/* Remove tap highlight on mobile */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure minimum touch targets */
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Improve focus states for accessibility */
+:focus-visible {
+    outline: 2px solid var(--color-gold, #D4AF77);
+    outline-offset: 2px;
+}
+
+/* Safe area padding for notched devices */
+.safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+.safe-area-top {
+    padding-top: env(safe-area-inset-top, 0);
+}
+
+/* Smooth scrolling for touch */
+html {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text selection on interactive elements */
+button,
+.btn,
+.icon-btn {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Loading indicator utility */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--color-charcoal, #3E3835);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Touch-friendly links */
+@media (max-width: 767px) {
+    a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Ensure proper spacing between clickable elements */
+    .nav-links li,
+    .mobile-nav-links a {
+        margin-bottom: 8px;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

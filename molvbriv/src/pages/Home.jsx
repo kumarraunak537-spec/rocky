@@ -29,7 +29,7 @@ const Home = () => {
                 </div>
 
                 <div className="hero-content container">
-                    <span className="hero-established animate-fade-in">Established 2026</span>
+                    <span className="hero-established animate-fade-in">ESTABLISHED 2026</span>
 
                     <h1 className="hero-title animate-fade-in" style={{ animationDelay: '0.2s' }}>
                         Where Legacy <br />
@@ -52,8 +52,7 @@ const Home = () => {
                 </div>
 
                 <div className="scroll-indicator animate-fade-in" style={{ animationDelay: '1s' }}>
-                    <span>Scroll</span>
-                    <ChevronDown size={20} />
+                    <ChevronDown size={24} />
                 </div>
             </section>
 

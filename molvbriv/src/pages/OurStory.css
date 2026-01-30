@@ -269,6 +269,46 @@
     transform: translateY(0);
 }
 
+@media (max-width: 767px) {
+    .hero-chapter {
+        height: 80vh;
+    }
+
+    .chapter-title {
+        font-size: 2.5rem;
+    }
+
+    .chapter-content {
+        padding: var(--spacing-md);
+        margin: 0 1rem;
+    }
+
+    .parallax-chapter {
+        background-attachment: scroll;
+    }
+
+    .parallax-bg {
+        background-attachment: scroll;
+    }
+
+    .vision-quote {
+        font-size: 1.5rem;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+        text-align: left;
+        left: 0;
+    }
+}
+
 @media (min-width: 768px) {
     .split-layout {
         grid-template-columns: 1fr 1fr;

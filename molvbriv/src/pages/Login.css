@@ -71,3 +71,25 @@
     color: var(--color-gold);
     text-decoration: underline;
 }
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .login-page {
+        padding-top: 80px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .login-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .login-title {
+        font-size: 2rem;
+    }
+
+    .btn-login {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+}

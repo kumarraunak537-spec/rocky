@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
-import { Filter } from 'lucide-react';
+import { Filter, X } from 'lucide-react';
 import './Collections.css';
 
 // Hardcoded filters for now, or could be dynamic too
@@ -147,8 +147,24 @@ const Collections = () => {
                 </button>
 
                 <div className="collections-layout">
+                    {/* Filter Sidebar Backdrop (Mobile) */}
+                    <div
+                        className={`filter-backdrop ${isFilterOpen ? 'open' : ''}`}
+                        onClick={() => setIsFilterOpen(false)}
+                        aria-hidden="true"
+                    ></div>
+
                     {/* Sidebar */}
                     <aside className={`filter-sidebar ${isFilterOpen ? 'open' : ''}`}>
+                        {/* Mobile Close Button */}
+                        <button
+                            className="filter-close-btn"
+                            onClick={() => setIsFilterOpen(false)}
+                            aria-label="Close filters"
+                        >
+                            <X size={24} />
+                        </button>
+
                         <div className="filter-group">
                             <h3>Category</h3>
                             <ul>

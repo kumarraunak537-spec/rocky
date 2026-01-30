@@ -123,6 +123,26 @@
     text-decoration: underline;
 }
 
+@media (max-width: 767px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .category-filter {
+        gap: var(--spacing-sm);
+        padding: 0 1rem;
+    }
+
+    .cat-btn {
+        font-size: 0.75rem;
+        padding: 8px 4px;
+    }
+
+    .journal-img-wrapper {
+        height: 200px;
+    }
+}
+
 @media (min-width: 768px) {
     .journal-grid {
         grid-template-columns: repeat(2, 1fr);
