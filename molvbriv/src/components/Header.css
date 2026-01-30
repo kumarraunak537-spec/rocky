@@ -1,4 +1,4 @@
-/* Existing Header Styles */
+﻿/* Existing Header Styles */
 .header {
     position: fixed;
     top: 0;
@@ -196,19 +196,27 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    /* Remove padding to be tighter */
+    padding: 8px;
+    /* Touch-friendly padding */
+    min-width: 44px;
+    min-height: 44px;
     color: #000000;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s, transform 0.1s;
     display: flex;
     align-items: center;
     justify-content: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .icon-btn:hover {
     opacity: 0.7;
     color: inherit;
     /* Don't change color on hover, just opacity */
+}
+
+.icon-btn:active {
+    opacity: 0.5;
+    transform: scale(0.95);
 }
 
 .cart-icon-wrapper {
@@ -259,6 +267,32 @@
 
 .mobile-menu.open {
     transform: translateX(0);
+}
+
+/* Mobile Menu Backdrop */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2004;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.mobile-menu-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Search close button - hidden by default, shown on mobile */
+.search-close-mobile {
+    display: none;
 }
 
 .mobile-nav-links {
@@ -518,38 +552,83 @@
 /* Mobile Responsive - Phones */
 @media (max-width: 1023px) {
     .header {
-        padding: 5px 0;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.02);
-        /* Slight tint */
+        padding: 0;
+        height: 70px;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .header.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
     }
 
     .header-container {
-        padding: 0 15px;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        height: 100%;
+        padding: 0 20px;
+        gap: 0;
     }
 
+    /* Left Column - Hamburger */
+    .hamburger {
+        justify-self: start;
+        display: flex;
+        z-index: 2006;
+        color: #2B2B2B;
+        padding: 8px;
+        margin-left: -8px;
+        /* Move more to the left */
+    }
+
+    /* Center Column - Logo */
     .logo {
-        font-size: 1.4rem;
-        /* Slightly larger as requested */
-        letter-spacing: 0.15em;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        justify-self: center;
+        font-family: serif;
+        /* Elegant serif like reference */
+        font-size: 1.25rem;
+        letter-spacing: 0.35em;
+        /* Wide spacing like reference */
+        font-weight: 400;
+        /* Not bold */
+        text-transform: uppercase;
+        color: #08300c;
+        /* Dark brown/charcoal */
+        position: static;
+        transform: none;
         z-index: 2002;
-        width: max-content;
-        color: #1a1a1a;
+        white-space: nowrap;
     }
 
+    /* Right Column - Action Icons */
     .header-actions {
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        gap: 1px;
+        /* Reduced gap */
         z-index: 2002;
-        gap: 12px;
-        /* Tighter spacing for mobile icons */
     }
 
     .icon-btn {
-        padding: 4px;
-        /* Larger touch target area visual */
+        padding: 8px;
+        color: #2B2B2B;
+        /* Dark brown/charcoal */
+        position: relative;
+    }
+
+    .icon-btn svg {
+        stroke-width: 1.5px;
+    }
+
+    /* Cart Badge - Hidden */
+    .cart-count {
+        display: none;
     }
 
     .u-desktop-only {
@@ -564,58 +643,131 @@
         display: none;
     }
 
-    /* --- Luxury Mobile Drawer (Half-Open) --- */
+    /* --- Mobile Menu (Reference Match) --- */
 
     .mobile-menu {
         position: fixed;
         top: 0;
         left: 0;
-        width: 75%;
-        /* Half-open / 75% width */
-        max-width: 320px;
+        width: 70%;
+        max-width: 450px;
         height: 100vh;
-        background: #fdfcf8;
-        /* Solid luxury cream/white */
+        background: #F8F5F0;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        padding-top: 80px;
-        padding-left: 30px;
-        /* Left aligned content */
-        box-shadow: 10px 0 40px rgba(0, 0, 0, 0.2);
-        /* Deep shadow */
+        box-shadow: 4px 0 40px rgba(0, 0, 0, 0.1);
         z-index: 2005;
         transform: translateX(-100%);
-        /* Slide from Left */
         visibility: hidden;
-        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s 0.5s;
+        transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), visibility 0s 0.5s;
     }
 
     .mobile-menu.open {
         transform: translateX(0);
         visibility: visible;
-        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
+        transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), visibility 0s;
     }
 
+    /* Mobile Menu Header */
+    .mobile-menu-header {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 24px 20px 16px;
+        /* Less top, more left */
+    }
+
+    .mobile-menu-logo {
+        font-family: serif;
+        font-size: 1.2rem;
+        font-weight: 400;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: #1a1a1a;
+        margin: 0;
+        margin-top: -600px;
+        margin-left: 8px;
+        /* Align with HOME button */
+    }
+
+    .mobile-menu-close {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        transition: opacity 0.3s;
+        margin-top: -600px;
+        /* Same level as logo */
+    }
+
+    .mobile-menu-close svg {
+        stroke-width: 1.2px;
+        /* Thin elegant stroke */
+    }
+
+    .mobile-menu-close:active {
+        opacity: 0.5;
+    }
+
+    /* Navigation Links */
     .mobile-nav-links {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 50px;
         text-align: left;
-        /* Alignment fix */
         width: 100%;
+        padding: 0 24px;
+        margin-top: -250px;
+        /* Move all nav links up together */
+        /* Moved up */
     }
 
     .mobile-link {
-        font-family: var(--font-serif);
-        font-size: 1.8rem;
-        /* Premium size */
-        color: #1a1a1a;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #9A918A;
         text-decoration: none;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
         opacity: 0;
-        transform: translateX(-20px);
-        transition: all 0.4s ease;
+        transform: translateX(-10px);
+        transition: color 0.3s ease, transform 0.5s ease, opacity 0.5s ease;
+        display: block;
+    }
+
+    .mobile-link:first-child {
+        color: #1C1B1A;
+        /* Black active */
+        font-weight: 500;
+    }
+
+    /* Move COLLECTIONS up */
+    .mobile-link:nth-child(2) {
+        margin-top: -60px;
+    }
+
+    /* Move OUR STORY up */
+    .mobile-link:nth-child(3) {
+        margin-top: -60px;
+    }
+
+    /* Move JOURNAL up */
+    .mobile-link:nth-child(4) {
+        margin-top: -60px;
+    }
+
+    /* Move CONTACT up */
+    .mobile-link:nth-child(5) {
+        margin-top: -60px;
     }
 
     .mobile-menu.open .mobile-link {
@@ -625,126 +777,261 @@
 
     /* Stagger delays */
     .mobile-menu.open .mobile-link:nth-child(1) {
-        transition-delay: 0.1s;
+        transition-delay: 0.08s;
     }
 
     .mobile-menu.open .mobile-link:nth-child(2) {
-        transition-delay: 0.15s;
+        transition-delay: 0.14s;
     }
 
     .mobile-menu.open .mobile-link:nth-child(3) {
-        transition-delay: 0.2s;
+        transition-delay: 0.20s;
     }
 
     .mobile-menu.open .mobile-link:nth-child(4) {
-        transition-delay: 0.25s;
+        transition-delay: 0.26s;
     }
 
     .mobile-menu.open .mobile-link:nth-child(5) {
-        transition-delay: 0.3s;
-    }
-
-    .mobile-menu.open .mobile-link:nth-child(6) {
-        transition-delay: 0.35s;
-    }
-
-    .mobile-menu.open .mobile-link:nth-child(7) {
-        transition-delay: 0.4s;
+        transition-delay: 0.32s;
     }
 
     /* Hamburger Config */
     .hamburger {
         display: flex;
         z-index: 2006;
-        /* Above menu */
         color: #1a1a1a;
         margin-right: auto;
-        /* Push to left */
     }
 
-    /* --- Search Bar Mobile Redesign (Glassmorphism Overlay) --- */
+    /* --- Search Bar Mobile Redesign (Click to Expand like Desktop) --- */
     .search-inline-wrapper {
-        position: static;
-    }
-
-    .search-inline-wrapper.active .search-inline-form {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 90px;
-        /* Navbar height + extra */
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 0 20px;
-        z-index: 2010;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
+        justify-content: flex-end;
     }
 
+    /* Search Icon Button (visible by default) */
+    .search-trigger {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1004;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
+
+    /* Search Form - Collapsed by default, expands RIGHT to LEFT */
     .search-inline-form {
-        position: fixed;
-        top: -100px;
-        /* Hidden above */
-        left: 0;
-        width: 100%;
-        height: 90px;
-        transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        z-index: 2010;
-        background: rgba(255, 255, 255, 0.95);
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-radius: 25px;
+        border: none;
+        box-shadow: none;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        z-index: 1003;
+        overflow: hidden;
+        pointer-events: none;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Search Form - Expanded on click (RIGHT to LEFT expand) */
+    .search-inline-wrapper.active .search-inline-form {
+        width: calc(100vw - 140px);
+        max-width: 280px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        padding: 0 42px 0 16px;
+        pointer-events: auto;
+        right: 0;
     }
 
     .search-inline-input {
         width: 100%;
         font-family: var(--font-serif);
-        font-size: 1.4rem;
-        color: #000;
-        background: transparent;
-        border: none;
+        font-size: 1rem;
+        color: #333;
+        background: transparent !important;
+        border: none !important;
         text-align: left;
-        padding-right: 40px;
+        padding: 0 !important;
+        opacity: 0;
+        transform: translateX(15px);
+        transition: all 0.35s ease 0.1s;
+        outline: none !important;
+    }
+
+    .search-inline-wrapper.active .search-inline-input {
+        opacity: 1;
+        transform: translateX(0);
     }
 
     .search-inline-input::placeholder {
-        color: #999;
+        color: #777;
+        font-style: italic;
+        font-size: 0.95rem;
+    }
+
+    /* Search icon inside the expanded pill */
+    .search-inline-form::after {
+        content: '';
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease 0.15s;
+    }
+
+    .search-inline-wrapper.active .search-inline-form::after {
+        opacity: 1;
+    }
+
+    /* Hide close button on mobile - use backdrop click to close */
+    .search-close-mobile {
+        display: none !important;
+    }
+
+    /* Search Backdrop - Blur covers entire screen */
+    .search-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        z-index: 3000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .search-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Mobile Search Form - Rendered ABOVE backdrop, so NOT blurred */
+    .search-mobile-form {
+        position: fixed;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%) scale(0.95);
+        width: calc(100% - 32px);
+        max-width: 340px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 28px;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        padding: 0 50px 0 20px;
+        z-index: 3500;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s;
+    }
+
+    .search-mobile-form.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-50%) scale(1);
+        transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s;
+    }
+
+    .search-mobile-input {
+        flex: 1;
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        color: #333;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+    }
+
+    .search-mobile-input::placeholder {
+        color: rgba(0, 0, 0, 0.45);
         font-style: italic;
     }
 
-    .search-close-mobile {
+    .search-mobile-close {
         position: absolute;
-        right: 20px;
+        right: 12px;
         top: 50%;
         transform: translateY(-50%);
         background: none;
         border: none;
-        color: #555;
+        color: #000;
         padding: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        -webkit-tap-highlight-color: transparent;
+        /* No state changes - completely stable */
+        transition: none !important;
     }
 
-    /* --- Cart Drawer Mobile (Right Side Half) --- */
-    .cart-drawer {
-        width: 85%;
-        /* Not full screen */
-        max-width: 380px;
-        background: #fdfcf8;
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+    .search-mobile-close:hover,
+    .search-mobile-close:active,
+    .search-mobile-close:focus {
+        transform: translateY(-50%) !important;
+        outline: none !important;
+        background: none !important;
     }
 
-    /* Ensure backdrop is visible for both menus */
-    .cart-drawer-overlay.open {
-        opacity: 1;
-        pointer-events: auto;
-        backdrop-filter: blur(4px);
+    /* Hide old search form on mobile */
+    .search-inline-form {
+        display: none !important;
     }
+
+    .search-inline-wrapper {
+        position: relative;
+    }
+
+    .search-trigger {
+        display: flex !important;
+    }
+
 }
 
+/* End Mobile Media Query */
 /* Desktop */
 @media (min-width: 1024px) {
     .nav-desktop {
@@ -765,5 +1052,23 @@
 
     .u-desktop-only {
         display: flex !important;
+    }
+
+    /* Hide mobile search form on desktop */
+    .search-mobile-form {
+        display: none !important;
+    }
+
+    /* Restore desktop search inline form */
+    .search-inline-form {
+        display: flex !important;
+    }
+
+    /* Hide mobile search backdrop on desktop - use existing desktop backdrop */
+    .search-backdrop {
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        background-color: rgba(0, 0, 0, 0.15);
+        z-index: 999;
     }
 }

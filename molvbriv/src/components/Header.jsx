@@ -36,6 +36,40 @@ const Header = () => {
     setIsCartOpen(false);
   }, [location]);
 
+  // ESC key handler - close all modals/menus
+  useEffect(() => {
+    const handleEscKey = (e) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        setIsSearchOpen(false);
+        setIsCartOpen(false);
+        setIsClothesOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+    return () => document.removeEventListener('keydown', handleEscKey);
+  }, []);
+
+  // Browser back button integration
+  useEffect(() => {
+    const handlePopState = () => {
+      if (isMobileMenuOpen || isCartOpen || isSearchOpen) {
+        setIsMobileMenuOpen(false);
+        setIsSearchOpen(false);
+        setIsCartOpen(false);
+      }
+    };
+
+    // Push history state when modal opens
+    if (isMobileMenuOpen || isCartOpen || isSearchOpen) {
+      window.history.pushState({ modal: true }, '');
+    }
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isMobileMenuOpen, isCartOpen, isSearchOpen]);
+
   const handleAccountClick = () => {
     navigate('/login');
   };
@@ -117,8 +151,9 @@ const Header = () => {
           {/* Icons (Right Side) */}
           <div className="header-actions">
 
-            {/* Inline Search Container - Logic handled in CSS */}
+            {/* Search - Desktop inline form + Mobile trigger */}
             <div className={`search-inline-wrapper ${isSearchOpen ? 'active' : ''}`}>
+              {/* Desktop Search Form (hidden on mobile via CSS) */}
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -134,8 +169,17 @@ const Header = () => {
                     placeholder="Search for luxury..."
                     className="search-inline-input"
                   />
+                  <button
+                    type="button"
+                    className="search-close-mobile"
+                    onClick={() => setIsSearchOpen(false)}
+                    aria-label="Close search"
+                  >
+                    <X size={24} />
+                  </button>
                 </div>
               </form>
+              {/* Search Trigger Button */}
               <button
                 className="icon-btn search-trigger"
                 aria-label="Search"
@@ -150,31 +194,71 @@ const Header = () => {
             </button>
             <button className="icon-btn cart-icon-wrapper" aria-label="Cart" onClick={() => setIsCartOpen(true)}>
               <ShoppingBag size={22} />
-              <span className="cart-count">1</span>
             </button>
           </div>
         </div>
       </header>
 
+      {/* Mobile Menu Backdrop */}
+      <div
+        className={`mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+        aria-hidden="true"
+      ></div>
+
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+        {/* Mobile Menu Header */}
+        <div className="mobile-menu-header">
+          <span className="mobile-menu-logo">MOLVBRIV</span>
+          <button
+            className="mobile-menu-close"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
         <nav className="mobile-nav-links">
-          <Link to="/" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-          <Link to="/collections" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Collections</Link>
-          <Link to="/our-story" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Our Story</Link>
-          <Link to="/journal" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Journal</Link>
-          <Link to="/contact" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
-          <div style={{ height: '1px', background: '#e5e5e5', width: '50px', margin: '20px auto' }}></div>
-          <Link to="/login" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Account</Link>
-          <Link to="#" className="mobile-link" onClick={() => { setIsMobileMenuOpen(false); setIsCartOpen(true); }}>Cart</Link>
+          <Link to="/" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>HOME</Link>
+          <Link to="/collections" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>COLLECTIONS</Link>
+          <Link to="/our-story" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>OUR STORY</Link>
+          <Link to="/journal" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>JOURNAL</Link>
+          <Link to="/contact" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>CONTACT</Link>
         </nav>
       </div>
 
-      {/* Search Backdrop (Dimmer) */}
+      {/* Search Backdrop (Dimmer) - Blur effect */}
       <div
         className={`search-backdrop ${isSearchOpen ? 'active' : ''}`}
         onClick={() => setIsSearchOpen(false)}
       ></div>
+
+      {/* Search Form - Rendered AFTER backdrop so it stays above blur */}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          navigate('/collections');
+          setIsSearchOpen(false);
+        }}
+        className={`search-mobile-form ${isSearchOpen ? 'active' : ''}`}
+      >
+        <input
+          ref={searchInputRef}
+          type="text"
+          placeholder="Search for luxury..."
+          className="search-mobile-input"
+        />
+        <button
+          type="button"
+          className="search-mobile-close"
+          onClick={() => setIsSearchOpen(false)}
+          aria-label="Close search"
+        >
+          <X size={20} />
+        </button>
+      </form>
 
       {/* Cart Drawer */}
       <div className={`cart-drawer-overlay ${isCartOpen ? 'open' : ''}`} onClick={() => setIsCartOpen(false)}></div>
@@ -189,21 +273,26 @@ const Header = () => {
         <div className="cart-items">
           {/* Mock Item */}
           <div className="cart-item">
-            <img src={MOCK_CART_ITEM.image} alt={MOCK_CART_ITEM.name} className="cart-item-img" />
+            <img
+              src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=1974&auto=format&fit=crop"
+              alt="The Classic Tote"
+              className="cart-item-img"
+            />
             <div className="cart-item-info">
-              <h4>{MOCK_CART_ITEM.name}</h4>
-              <p className="cart-item-price">Rs. {MOCK_CART_ITEM.price}</p>
-              <p style={{ fontSize: '0.8rem', color: '#000000ff', marginTop: '5px' }}>Qty: {MOCK_CART_ITEM.quantity}</p>
+              <h4>The Classic Tote</h4>
+              <p className="cart-item-price">$1,250</p>
             </div>
           </div>
         </div>
 
         <div className="cart-footer">
           <div className="cart-total">
-            <span>Subtotal</span>
-            <span>Rs. 1,250.00</span>
+            <span>Total</span>
+            <span>$1,250</span>
           </div>
-          <button className="btn-checkout">Checkout</button>
+          <button className="btn-checkout">
+            Checkout <ArrowRight size={16} />
+          </button>
         </div>
       </div>
     </>
