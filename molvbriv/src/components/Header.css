@@ -734,20 +734,37 @@
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
         font-weight: 400;
-        color: #9A918A;
+        color: #1C1B1A;
         text-decoration: none;
         letter-spacing: 0.18em;
         text-transform: uppercase;
         opacity: 0;
         transform: translateX(-10px);
-        transition: color 0.3s ease, transform 0.5s ease, opacity 0.5s ease;
+        transition: color 0.15s ease, transform 0.5s ease, opacity 0.5s ease;
         display: block;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        cursor: pointer;
+    }
+
+    .mobile-link:hover {
+        color: #555555;
+    }
+
+    .mobile-link:active,
+    .mobile-link:focus {
+        color: #000000 !important;
+        outline: none;
     }
 
     .mobile-link:first-child {
         color: #1C1B1A;
         /* Black active */
-        font-weight: 500;
+        font-weight: 400;
+    }
+
+    .mobile-link:first-child:active {
+        color: #000000 !important;
     }
 
     /* Move COLLECTIONS up */
