@@ -38,7 +38,7 @@
     /* Adjusted for Cinzel's usually larger appearance */
     font-weight: 500;
     /* Medium weight */
-    letter-spacing: 0.25em;
+    letter-spacing: 0.15em;
     /* Requested spacing */
     text-transform: uppercase;
     z-index: 1002;
@@ -683,7 +683,7 @@
         font-family: serif;
         font-size: 1.2rem;
         font-weight: 400;
-        letter-spacing: 0.35em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
         color: #1a1a1a;
         margin: 0;
